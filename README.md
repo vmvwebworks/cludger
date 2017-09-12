@@ -1,19 +1,17 @@
-* Ruby version
-  2.4.0 (RVM)
-* Rails version
-  5.1.4
-* Database
-  MongoDB
-* Administration
+#Ruby version
+2.4.0 (RVM)
+#Rails version
+5.1.4
+#Database
+MongoDB
+#Administrator
 
-* System dependencies
+#System dependencies
 
-* Configuration
+#Configuration
 
-* How to run the test suite
+#How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+#Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
+#Deployment instructions
