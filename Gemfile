@@ -14,6 +14,8 @@ gem 'rails', '~> 5.1.4'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Estilo materialize
+gem 'materialize-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -34,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'bundler'
   #ejecución de tests
   gem 'rspec-rails', '~> 3.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
