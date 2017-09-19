@@ -16,7 +16,9 @@ gem 'puma', '~> 3.7'
 # Slim templates
 gem 'slim'
 gem 'slim-rails'
+gem 'jquery-rails'
 
+gem 'devise'
 gem 'sass-rails', '~> 5.0'
 # Estilo materialize
 gem 'materialize-sass'
