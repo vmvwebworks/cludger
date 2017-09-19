@@ -1,1 +1,17 @@
+/* footer adhesivo - sticky footer */
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #E0E4CC;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+/* colores */
+@import "materialize/components/color";
+$primary-color: #3C3741 !default;
+$secondary-color: #A19C69 !default;
 @import "materialize";
