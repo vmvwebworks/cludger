@@ -8,7 +8,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render :file =>"layouts/header"
-    .row
-      .col.s12
-        = yield
+    main
+      .container
+        .row
+          = yield
     = render :file =>"layouts/footer"

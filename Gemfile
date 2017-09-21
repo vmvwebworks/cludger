@@ -19,6 +19,7 @@ gem 'slim-rails'
 gem 'jquery-rails'
 
 gem 'devise'
+gem 'omniauth-google-oauth2'
 gem 'sass-rails', '~> 5.0'
 # Estilo materialize
 gem 'materialize-sass'
