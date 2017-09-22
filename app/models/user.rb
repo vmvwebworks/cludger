@@ -5,18 +5,29 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
   def self.from_omniauth(access_token)
-    puts access_token
     data = access_token.info
-    user = User.where(email: data['email']).first
-    user
+    puts data['email']
+    where(provider: data['provider'], uid: data['uid']).first_or_create do |user|
+      user.name = data['first_name']
+      user.last_name = data['last_name']
+      user.email = data['email']
+      user.email_verified = true
+      user.provider = data['provider']
+      user.uid = data['uid']
+      user.profile_image = data['image']
+      user.encrypted_password = Devise.friendly_token[0,20]
+    end
   end
-
   #has_and_belongs_to_many :organizations
   ## Database authenticatable
+  field :profile_image,      type: String, default: ""
   field :name,               type: String, default: ""
   field :last_name,          type: String, default: ""
   field :email,              type: String, default: ""
+  field :email_verified,     type: Boolean, default: false
   field :encrypted_password, type: String, default: ""
+  field :provider,           type: String, default: ""
+  field :uid,                type: Integer
 
   ## Recoverable
   field :reset_password_token,   type: String
