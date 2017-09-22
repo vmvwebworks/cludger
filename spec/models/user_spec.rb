@@ -7,3 +7,10 @@ RSpec.describe User, :type => :model do
     expect(returned_used.email).to eq(lindeman.email)
   end
 end
+RSpec.describe User, :type => :model do
+  it "returns the request.env object" do
+    post "users/auth/google_oauth2/callback.google_oauth2"
+    puts request.env['omniauth.auth']
+    #User.from_omniauth(request.env['omniauth.auth'])
+  end
+end

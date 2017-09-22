@@ -265,6 +265,7 @@ DEPENDENCIES
   material_icons
   materialize-sass
   mongoid (~> 6.1.0)
+  omniauth
   omniauth-google-oauth2
   puma (~> 3.7)
   rails (~> 5.1.4)
