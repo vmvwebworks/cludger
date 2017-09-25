@@ -1,11 +1,29 @@
 header
+  /! Dropdown Structure
+  ul#dropdown1.dropdown-content
+    li
+      a href="#!" lista de organizaciones
+
   nav
     .nav-wrapper
       a.brand-logo href="#"  Logo
       ul#nav-mobile.right.hide-on-med-and-down
-        li
-          a href="sass.html"  Sass
-        li
-          a href="badges.html"  Components
-        li
-          a href="collapsible.html"  JavaScript
+        - if current_user
+          li
+            a href="sass.html"  Hablar con
+          li
+            a.dropdown-button href="#!" data-activates="dropdown1"
+              | Organizaciones
+              i.material-icons.right arrow_drop_down
+          li
+            a href="collapsible.html"  Mi usuario
+        - else
+          li
+            = link_to "Login", new_user_session_path
+      #nav-mobile.right.hide-on-med-and-down
+        form
+          .input-field
+            input#search required="" type="search" /
+            label.label-icon for="search"
+              i.material-icons search
+            i.material-icons close

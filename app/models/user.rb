@@ -28,6 +28,9 @@ class User
   field :encrypted_password, type: String, default: ""
   field :provider,           type: String, default: ""
   field :uid,                type: Integer
+  field :private,            type: Boolean, default: false
+  field :profesional_kind,   type: String, default: ""
+  field :pro_verified,       type: String, default: false 
 
   ## Recoverable
   field :reset_password_token,   type: String

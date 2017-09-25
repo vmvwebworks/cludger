@@ -2,16 +2,17 @@
 
 /* colores */
 @import "materialize/components/color";
-$primary-color: #202020 !default;
-$secondary-color: #AEB0B0 !default;
+$primary-color: #D24D57 !default;
+$secondary-color: #D64541 !default;
 @import "materialize";
+@import "material_icons";
 
 /* footer adhesivo - sticky footer */
   body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #EAEAEA;
+    background-color: #DADFE1;
   }
 
   main {
