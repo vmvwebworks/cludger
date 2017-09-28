@@ -1,5 +1,6 @@
 App.room = App.cable.subscriptions.create "RoomChannel",
   connected: ->
+    alert("bienvenido")
     # Called when the subscription is ready for use on the server
 
   disconnected: ->
