@@ -4,7 +4,8 @@ class Message
   field :content, type: String
   after_create do |document|
     puts "esto lo hace"
-    puts document.content
+    document = document.to_json
+    puts document
     MessageBroadcastJob.perform_later(document)
   end
 end
