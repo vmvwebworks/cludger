@@ -18,7 +18,7 @@ class User
       user.encrypted_password = Devise.friendly_token[0,20]
     end
   end
-  #has_and_belongs_to_many :organizations
+  has_and_belongs_to_many :conversations
   ## Database authenticatable
   field :profile_image,      type: String, default: ""
   field :name,               type: String, default: ""
@@ -30,7 +30,7 @@ class User
   field :uid,                type: Integer
   field :private,            type: Boolean, default: false
   field :profesional_kind,   type: String, default: ""
-  field :pro_verified,       type: String, default: false 
+  field :pro_verified,       type: String, default: false
 
   ## Recoverable
   field :reset_password_token,   type: String
