@@ -3,6 +3,9 @@ header
   ul#dropdown1.dropdown-content
     li
       a href="#!" lista de organizaciones
+  ul#dropdown2.dropdown-content
+    li
+      = link_to "Salir", destroy_user_session_path(@user), :method => :delete
 
   nav
     .nav-wrapper
@@ -16,10 +19,13 @@ header
               | Organizaciones
               i.material-icons.right arrow_drop_down
           li
-            a href="collapsible.html"  Mi usuario
+            a.dropdown-button href="#!" data-activates="dropdown2"
+              | Mi usuario
+              i.material-icons.right arrow_drop_down
         - else
           li
             = link_to "Login", new_user_session_path
+
       #nav-mobile.right.hide-on-med-and-down
         form
           .input-field
