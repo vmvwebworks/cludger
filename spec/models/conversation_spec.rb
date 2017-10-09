@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Conversation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "crear conversaciones" do
+    conv = Conversation.create!(user_ids: ["fafaggwea", "hiuhguyguy"])
+  end
 end
