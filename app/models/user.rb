@@ -18,7 +18,10 @@ class User
     end
   end
   def contacts
-    User.where(id: contact_list)
+    User.find(contact_list) do |contact|
+      puts "dame el nombre de un contacto ijueputa"
+      puts contact.name
+    end
   end
   #has_and_belongs_to_many :organizations
   ## Database authenticatable
