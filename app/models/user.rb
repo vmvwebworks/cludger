@@ -15,11 +15,11 @@ class User
       user.uid = access_token['uid']
       user.profile_image = data['image']
       user.encrypted_password = Devise.friendly_token[0,20]
+
     end
   end
   def contacts
     User.find(contact_list) do |contact|
-      puts "dame el nombre de un contacto ijueputa"
       puts contact.name
     end
   end
@@ -36,7 +36,7 @@ class User
   field :private,            type: Boolean, default: false
   field :profesional_kind,   type: String, default: ""
   field :pro_verified,       type: String, default: false
-  field :contact_list,       type: Array
+  field :contact_list,       type: Array, default: []
 
   ## Recoverable
   field :reset_password_token,   type: String
