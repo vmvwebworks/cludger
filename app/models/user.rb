@@ -19,9 +19,7 @@ class User
     end
   end
   def contacts
-    User.find(contact_list) do |contact|
-      puts contact.name
-    end
+    User.find(contact_list)
   end
   #has_and_belongs_to_many :organizations
   ## Database authenticatable
