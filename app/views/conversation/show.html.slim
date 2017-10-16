@@ -1,0 +1,19 @@
+h1 ActionCable chat
+#messages
+  = render @messages
+input type="text" data-behavior="conversation_speaker"
+button.waves-effect.waves-light.btn.modal-trigger href="#example_modal" modal
+.modal.modal-fixed-footer id="example_modal"
+  .modal-content
+    h4 modal header
+    p modal content
+  .modal-footer
+    h4 aqui va la caja de texto para escribir
+    a.modal-action.modal-close.waves-effect.waves-green.btn-flat href="#!" cerrar
+javascript:
+  $(document).ready(function() {
+    $('.modal').modal({
+      dismissible: true
+    });
+    $('#exemple_modal').modal('open');
+  });

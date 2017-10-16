@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   #get 'rooms/show'
   root to: 'home#index'
   get 'rooms/show', to: 'rooms#show'
+  get 'conversation/show', to: 'conversation#show'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     sessions: 'users/sessions',

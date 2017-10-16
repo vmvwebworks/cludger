@@ -16,14 +16,40 @@ class User
       user.uid = access_token['uid']
       user.profile_image = data['image']
       user.encrypted_password = Devise.friendly_token[0,20]
-
+    end
+  end
+  def invite_user(contact_id)
+    if !contact_list.include?(contact_id)
+      contact = User.find_by(id: contact_id)
+      conv = conversations.create!(user_ids: [contact_id], type: "private")
+      contact.push(contact_list: id)
+      push(contact_list: contact_id)
     end
   end
   def contacts
-    User.find(contact_list)
+    list = []
+    for a in contact_list
+      user = User.find_by(a['contact_id'])
+      list.push(user)
+    end
+    list
   end
+  def conversation_with(contact_id)
+    conversations.find_by(user_ids: contact_id, type: "private")
+  end
+  # def conversations
+  #   list = []
+  #   for a in contact_list
+  #     conversation = Conversation.find(a['conversation_id'])
+  #     list.push(conversation)
+  #   end
+  #   list
+  # end
+  # def contact(contact_id)
+  #   all_in(contact_list: [contact_id])
+  # end
+
   has_and_belongs_to_many :conversations
-  has_many :conversation_user_details
   ## Database authenticatable
   field :profile_image,      type: String, default: ""
   field :name,               type: String, default: ""
