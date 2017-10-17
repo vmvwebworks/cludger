@@ -27,12 +27,7 @@ class User
     end
   end
   def contacts
-    list = []
-    for a in contact_list
-      user = User.find_by(a['contact_id'])
-      list.push(user)
-    end
-    list
+    User.find(contact_list)
   end
   def conversation_with(contact_id)
     conversations.find_by(user_ids: contact_id, type: "private")
