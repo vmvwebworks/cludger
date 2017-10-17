@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Db MongoDB
-gem 'mongoid', '~> 6.1.0'
+gem 'mongoid', '~> 6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -45,7 +45,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-
+  # Load ENV variables
+  gem 'dotenv-rails'
   #ejecución de tests
   gem 'rspec-rails', '~> 3.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

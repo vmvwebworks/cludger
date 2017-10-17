@@ -4,6 +4,9 @@ class MessageBroadcastJob < ApplicationJob
     puts "pasa por message"
     ActionCable.server.broadcast 'room_#{message.user.id}_channel', message: render_message(message), conversation_id: message.user.id
   end
+
+  private
+
   def render_message(message)
     puts "pasa por render_message"
     puts message.inspect

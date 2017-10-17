@@ -44,6 +44,7 @@ class User
   #   all_in(contact_list: [contact_id])
   # end
 
+  # TODO: rewrite with has_many through:
   has_and_belongs_to_many :conversations
   ## Database authenticatable
   field :profile_image,      type: String, default: ""
