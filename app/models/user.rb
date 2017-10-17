@@ -18,7 +18,7 @@ class User
       user.encrypted_password = Devise.friendly_token[0,20]
     end
   end
-  def invite_user(contact_id)
+  def contact_request(contact_id)
     if !contact_list.include?(contact_id)
       contact = User.find_by(id: contact_id)
       conv = conversations.create!(user_ids: [contact_id], type: "private")
