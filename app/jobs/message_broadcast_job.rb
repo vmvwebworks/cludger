@@ -2,7 +2,7 @@ class MessageBroadcastJob < ApplicationJob
   queue_as :default
   def perform(message)
     puts "pasa por message"
-    ActionCable.server.broadcast 'room_#{message.user.id}_channel', message: render_message(message), conversation_id: message.user.id
+    ActionCable.server.broadcast "conversation_channel_#{message.conversation_id}", message: render_message(message)
   end
 
   private

@@ -1,18 +1,30 @@
-App.conversation = App.cable.subscriptions.create "Conversation_#{current_user.conversation_with(contact.id).id}_Channel",
-  connected: ->
-    # Called when the subscription is ready for use on the server
+CreateConversationChannel = function(conversationId) {
+  App.conversation = App.cable.subscriptions.create({
+    channel: "ConversationChannel",
+    roomId: conversationId
+  },
+  {
+    connected: function() {},
+    disconnected: function() {},
+    received: function(data) {
+      return $('#messages').append(data['message']);
+    },
+    speak: function(message, conversationId) {
+      return this.perform('speak', {
+        message: message,
+        conversationId: conversationId
+      });
+    }
+  });
 
-  disconnected: ->
-    # Called when the subscription has been terminated by the server
-
-  received: (data) ->
-    $('#messages').append data['message']
-    # Called when there's incoming data on the websocket for this channel
-
-  speak: (message)->
-    @perform 'speak', message: message
-   $(document).on 'keypress', '[data-behavior~=conversation_speaker]', (event) ->
-     if event.keyCode is 13 # return/enter = send
-       App.conversation.speak event.target.value
-       event.target.value = ''
-       event.preventDefault()
+  $(document).on('keypress', '[data-behavior~=conversation_speaker]', function(event) {
+    if (event.keyCode === 13) {
+      App.room.speak(event.target.value, roomId);
+      event.target.value = "";
+      event.preventDefault();
+    }
+    return $('#messages').animate({
+      scrollTop: $('#messages')[0].scrollHeight
+    }, 100);
+  });
+};
