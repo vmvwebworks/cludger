@@ -1,30 +1,13 @@
-CreateConversationChannel = function(conversationId) {
-  App.conversation = App.cable.subscriptions.create({
-    channel: "ConversationChannel",
-    roomId: conversationId
-  },
-  {
-    connected: function() {},
-    disconnected: function() {},
-    received: function(data) {
-      return $('#messages').append(data['message']);
-    },
-    speak: function(message, conversationId) {
-      return this.perform('speak', {
-        message: message,
-        conversationId: conversationId
-      });
-    }
-  });
-
-  $(document).on('keypress', '[data-behavior~=conversation_speaker]', function(event) {
-    if (event.keyCode === 13) {
-      App.room.speak(event.target.value, roomId);
-      event.target.value = "";
-      event.preventDefault();
-    }
-    return $('#messages').animate({
-      scrollTop: $('#messages')[0].scrollHeight
-    }, 100);
-  });
-};
+CreateConversationChannel = (conversationId) ->
+  App.conversation = App.cable.subscriptions.create channel: "ConversationChannel", roomId: conversationId,
+    connected: ->
+    disconnected: ->
+    received: (data) ->
+      $('#messages').append data['message']
+    speak: (message, conversation_id)->
+      @perform 'speak', message: message, conversation_id: conversation_id
+     $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
+      if event.keyCode is 13 # return/enter = send
+        App.room.speak event.target.value
+        event.target.value = ''
+        event.preventDefault()
