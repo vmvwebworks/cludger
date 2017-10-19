@@ -5,48 +5,11 @@ class User
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :timeoutable, omniauth_providers: [:google_oauth2]
-  def self.from_omniauth(access_token)
-    data = access_token.info
-    where(provider: access_token['provider'], uid: access_token['uid']).first_or_create do |user|
-      user.name = data['first_name']
-      user.last_name = data['last_name']
-      user.email = data['email']
-      user.email_verified = true
-      user.provider = access_token['provider']
-      user.uid = access_token['uid']
-      user.profile_image = data['image']
-      user.encrypted_password = Devise.friendly_token[0,20]
-    end
-  end
-  def contact_request(contact_id)
-    if !contact_list.include?(contact_id)
-      contact = User.find_by(id: contact_id)
-      conv = conversations.create!(user_ids: [contact_id], type: "private")
-      contact.push(contact_list: id)
-      push(contact_list: contact_id)
-    end
-  end
-  def contacts
-    User.find(contact_list)
-  end
-  def conversation_with(contact_id)
-    conversations.find_by(user_ids: contact_id, type: "private")
-  end
-  # def conversations
-  #   list = []
-  #   for a in contact_list
-  #     conversation = Conversation.find(a['conversation_id'])
-  #     list.push(conversation)
-  #   end
-  #   list
-  # end
-  # def contact(contact_id)
-  #   all_in(contact_list: [contact_id])
-  # end
 
   # TODO: rewrite with has_many through:
+  # TODO update: on Mongoid cannot be used throug.
   has_many :conversation_users
-  has_many :conversations, through: :conversation_users
+  has_many :conversations
   ## Database authenticatable
   field :profile_image,      type: String, default: ""
   field :name,               type: String, default: ""
@@ -87,4 +50,34 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
   #scope :contacts, -> { where(id: self.contact_list) }
+
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    where(provider: access_token['provider'], uid: access_token['uid']).first_or_create do |user|
+      user.name = data['first_name']
+      user.last_name = data['last_name']
+      user.email = data['email']
+      user.email_verified = true
+      user.provider = access_token['provider']
+      user.uid = access_token['uid']
+      user.profile_image = data['image']
+      user.encrypted_password = Devise.friendly_token[0,20]
+    end
+  end
+  # def contact_request(contact_id)
+  #   if !contact_list.include?(contact_id)
+  #     contact = User.find_by(id: contact_id)
+  #     conv = conversations.create!(user_ids: [contact_id], type: "private")
+  #     contact.push(contact_list: id)
+  #     push(contact_list: contact_id)
+  #   end
+  # end
+  def contacts
+    User.find(contact_list)
+  end
+  # def conversation_with(contact_id)
+  #   conversations.find_by(user_ids: contact_id, type: "private")
+  # end
+
+
 end
