@@ -45,7 +45,8 @@ class User
   # end
 
   # TODO: rewrite with has_many through:
-  has_and_belongs_to_many :conversations
+  has_many :conversation_users
+  has_many :conversations, through: :conversation_users
   ## Database authenticatable
   field :profile_image,      type: String, default: ""
   field :name,               type: String, default: ""
