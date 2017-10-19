@@ -8,8 +8,6 @@ class MessageBroadcastJob < ApplicationJob
   private
 
   def render_message(message)
-    puts "pasa por render_message"
-    puts message.inspect
-    ApplicationController.renderer.render(partial: 'messages/message', locals: {message: message})
+    ApplicationController.renderer.render(partial: 'messages/message', locals: {message: message, author_id: current_user.id})
   end
 end

@@ -10,7 +10,10 @@ header
     - if current_user
       - current_user.contacts.each do |contact|
         li
-          a href="#{contact.conversation_with(current_user.id).id}"
+          - conversation = contact.conversation_with(current_user.id)
+          javascript:
+            CreateConversationChannel("#{conversation.id}")
+          a href="#{conversation.id}"
             = contact.name
   nav
     .nav-wrapper
