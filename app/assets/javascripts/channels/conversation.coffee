@@ -1,6 +1,7 @@
-CreateConversationChannel = (conversationId) ->
-  App.conversation = App.cable.subscriptions.create channel: "ConversationChannel", roomId: conversationId,
-    connected: ->
+App.CreateConversationChannel = (conversationId) ->
+  App.cable.subscriptions.create channel: "ConversationChannel", conversationId: conversationId,
+    connected:
+      console.log(conversationId)
     disconnected: ->
     received: (data) ->
       $('#messages').append data['message']
