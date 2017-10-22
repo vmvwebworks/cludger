@@ -8,7 +8,7 @@ class User
 
   # TODO: rewrite with has_many through:
   # TODO update: on Mongoid cannot be used throug.
-  has_many :conversations
+  has_many :conversation_users
   ## Database authenticatable
   field :profile_image,      type: String, default: ""
   field :name,               type: String, default: ""
