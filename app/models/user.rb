@@ -75,7 +75,27 @@ class User
     conversation_list = Conversation.where(id: conversation_ids)
     conversation_list
   end
+  def start_conversation_with(user_id)
+    self_conversation_user = conversation_users.new
+    user_conversation_user = ConversationUser.new
+    conversation_between_users = Conversation.new
+    self_conversation_user.conversation_id = conversation_between_users.id
+    user_conversation_user.conversation_id = conversation_between_users.id
+    conversation_between_users.conversation_user_ids = [self_conversation_user.id, user_conversation_user.id]
+    self_conversation_user.save
+    user_conversation_user.save
+    conversation_between_users.save
+  end
   def conversation_with(user_id)
-    
+    conversation_with_the_user = ""
+    user = User.find(user_id)
+    conversations.each do |conversation|
+      user.conversation_users.each do |conversation_user|
+        if conversation.conversation_user_ids.exists? conversation_user.id
+          conversation_with_the_user = conversation
+        end
+      end
+    end
+    conversation_with_the_user
   end
 end
