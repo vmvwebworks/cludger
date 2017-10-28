@@ -1,9 +1,10 @@
 class Conversation
   include Mongoid::Document
   include Mongoid::Timestamps
-  has_many :conversation_users
-  has_many :messages through: :conversation_users
-  # def participate?(user)
-  #   user_ids.include?(user.id)
+  has_many :messages
+  field :content, type: String
+  field :conversation_user_ids, type: Array
+  # def conversation_user_ids
+  #   ConversationUser.where(conversation_id: id)
   # end
 end

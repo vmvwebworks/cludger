@@ -63,20 +63,19 @@ class User
       user.encrypted_password = Devise.friendly_token[0,20]
     end
   end
-  # def contact_request(contact_id)
-  #   if !contact_list.include?(contact_id)
-  #     contact = User.find_by(id: contact_id)
-  #     conv = conversations.create!(user_ids: [contact_id], type: "private")
-  #     contact.push(contact_list: id)
-  #     push(contact_list: contact_id)
-  #   end
-  # end
+
   def contacts
     User.find(contact_list)
   end
-  # def conversation_with(contact_id)
-  #   conversations.find_by(user_ids: contact_id, type: "private")
-  # end
-
-
+  def conversations
+    conversation_ids = []
+    conversation_users.each do |conversation_user|
+      conversation_ids.push(conversation_user.conversation_id)
+    end
+    conversation_list = Conversation.where(id: conversation_ids)
+    conversation_list
+  end
+  def conversation_with(user_id)
+    
+  end
 end
