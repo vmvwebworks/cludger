@@ -67,17 +67,18 @@ class User
   def contacts
     User.find(contact_list)
   end
-  def conversations
-    conversation_ids = []
+  def conversation_ids
+    conversation_list = []
     conversation_users.each do |conversation_user|
-      conversation_ids.push(conversation_user.conversation_id)
+      conversation_list.push(conversation_user.conversation_id)
     end
-    conversation_list = Conversation.where(id: conversation_ids)
+    #conversation_list = Conversation.where(id: conversation_ids)
     conversation_list
   end
   def start_conversation_with(user_id)
+    user = User.find(user_id)
     self_conversation_user = conversation_users.new
-    user_conversation_user = ConversationUser.new
+    user_conversation_user = user.conversation_users.new
     conversation_between_users = Conversation.new
     self_conversation_user.conversation_id = conversation_between_users.id
     user_conversation_user.conversation_id = conversation_between_users.id
@@ -85,17 +86,18 @@ class User
     self_conversation_user.save
     user_conversation_user.save
     conversation_between_users.save
+    puts self_conversation_user.user.email
+    puts user_conversation_user.user.email
+    puts conversation_between_users.conversation_user_ids
   end
   def conversation_with(user_id)
-    conversation_with_the_user = ""
+    conversation_with_the_user_id = ""
     user = User.find(user_id)
-    conversations.each do |conversation|
-      user.conversation_users.each do |conversation_user|
-        if conversation.conversation_user_ids.exists? conversation_user.id
-          conversation_with_the_user = conversation
-        end
+    conversation_ids.each do |conversation_id|
+      user.conversation_ids.each do |user_conversation_id|
+        conversation_with_the_user_id = conversation_id if user_conversation_id == conversation_id
       end
     end
-    conversation_with_the_user
+    Conversation.find(conversation_with_the_user_id)
   end
 end
