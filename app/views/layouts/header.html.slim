@@ -8,13 +8,12 @@ header
       a href="#!" lista de organizaciones
   ul#dropdown3.dropdown-content
     - if current_user
-      - current_user.contacts.each do |contact|
+      - current_user.conversations.each do |conversation|
         li
-          - conversation = contact.conversation_with(current_user.id)
           javascript:
             App.CreateConversationChannel("#{conversation.id}")
           a href="#!{conversation.id}"
-            = contact.name
+            = conversation.user.name
   nav
     .nav-wrapper
       a.brand-logo href="#"  Logo

@@ -21,7 +21,6 @@ class User
   field :private,            type: Boolean, default: false
   field :profesional_kind,   type: String, default: ""
   field :pro_verified,       type: String, default: false
-  field :contact_list,       type: Array, default: []
 
   ## Recoverable
   field :reset_password_token,   type: String
@@ -63,10 +62,6 @@ class User
       user.encrypted_password = Devise.friendly_token[0,20]
     end
   end
-
-  def contacts
-    User.find(contact_list)
-  end
   def conversation_ids
     conversation_list = []
     conversation_users.each do |conversation_user|
@@ -74,6 +69,9 @@ class User
     end
     #conversation_list = Conversation.where(id: conversation_ids)
     conversation_list
+  end
+  def conversations
+    Conversation.find(conversation_ids)
   end
   def start_conversation_with(user_id)
     user = User.find(user_id)
