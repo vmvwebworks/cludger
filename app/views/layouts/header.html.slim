@@ -13,7 +13,7 @@ header
           javascript:
             App.CreateConversationChannel("#{conversation.id}")
           a href="#!{conversation.id}"
-            = conversation.user.name
+            = conversation.user(current_user.id).name
   nav
     .nav-wrapper
       a.brand-logo href="#"  Logo
