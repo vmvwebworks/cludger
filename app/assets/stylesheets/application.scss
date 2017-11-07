@@ -2,8 +2,8 @@
 
 /* colores */
 @import "materialize/components/color";
-$primary-color: #D24D57 !default;
-$secondary-color: #D64541 !default;
+$primary-color: #ffab00 !default;
+$secondary-color: #ffd740 !default;
 @import "materialize";
 @import "material_icons";
 
@@ -12,9 +12,23 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: #DADFE1;
+  background-color: #fff8e1;
 }
 
 main {
   flex: 1 0 auto;
+}
+.user-view{
+  background-color: #efebe9;
+}
+.collection{
+  border: 1px solid #efebe9;
+}
+.collection.with-header .collection-header{
+  background-color: #efebe9;
+  border-bottom: 0px;
+}
+.collection .collection-item{
+  background-color: #efebe9;
+  border-bottom: 0px;
 }

@@ -9,7 +9,6 @@ html
   body
     = render :file =>"layouts/header"
     main
-      .container
-        .row
-          = yield
+      .row
+        = yield
     = render :file =>"layouts/footer"
