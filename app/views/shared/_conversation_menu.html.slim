@@ -1,0 +1,29 @@
+.container
+  .valign-wrapper
+    a.button-collapse.btn-floating.btn-large.waves-effect.waves-light href="#" data-activates="slide-out"
+      i.material-icons chat_bubble_outline
+ul.side-nav id="slide-out"
+  li
+    .user-view
+      h4
+        = welcome_message(current_user.name)
+      form
+        .input-field.col.s12
+
+          i.material-icons.prefix search
+          input#search type="search"
+          label.label-icon for="search"
+          i.material-icons close
+      
+      = render "shared/user_conversations"
+      ul.collection.with-header
+        li.collection-header
+          h4 Siguiendo
+
+javascript:
+  $('.button-collapse').sideNav({
+    menuWidth: 500,
+    edge: 'right',
+    closeOnClick: true,
+    draggable: true
+    });

@@ -18,3 +18,9 @@
 /yarn-error.log
 
 .byebug_history
+
+# RubyMine IDE config
+.idea/
+
+# Never expose sensetive keys
+.env

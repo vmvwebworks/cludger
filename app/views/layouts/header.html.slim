@@ -2,24 +2,23 @@ header
   /! Dropdown Structure
   ul#dropdown1.dropdown-content
     li
-      a href="#!" lista de organizaciones
+      = link_to "Salir", destroy_user_session_path(@user), :method => :delete
 
+  ul#dropdown3.dropdown-content
+    
   nav
     .nav-wrapper
       a.brand-logo href="#"  Logo
       ul#nav-mobile.right.hide-on-med-and-down
         - if current_user
           li
-            a href="sass.html"  Hablar con
-          li
             a.dropdown-button href="#!" data-activates="dropdown1"
-              | Organizaciones
+              | Mi usuario
               i.material-icons.right arrow_drop_down
-          li
-            a href="collapsible.html"  Mi usuario
         - else
           li
             = link_to "Login", new_user_session_path
+
       #nav-mobile.right.hide-on-med-and-down
         form
           .input-field
