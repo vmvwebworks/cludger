@@ -1,7 +1,9 @@
 class ConversationUser
   include Mongoid::Document
   belongs_to :user
-  belongs_to :conversation
   has_many :messages
-  field :role,      type: String
+  field :conversation_id, type: String
+  def conversation
+    Conversation.find(conversation_id)
+  end
 end

@@ -21,7 +21,6 @@ class User
   field :private,            type: Boolean, default: false
   field :profesional_kind,   type: String, default: ""
   field :pro_verified,       type: String, default: false
-  field :contact_list,       type: Array, default: []
 
   ## Recoverable
   field :reset_password_token,   type: String
@@ -63,20 +62,40 @@ class User
       user.encrypted_password = Devise.friendly_token[0,20]
     end
   end
-  # def contact_request(contact_id)
-  #   if !contact_list.include?(contact_id)
-  #     contact = User.find_by(id: contact_id)
-  #     conv = conversations.create!(user_ids: [contact_id], type: "private")
-  #     contact.push(contact_list: id)
-  #     push(contact_list: contact_id)
-  #   end
-  # end
-  def contacts
-    User.find(contact_list)
+  def conversation_ids
+    conversation_list = []
+    conversation_users.each do |conversation_user|
+      conversation_list.push(conversation_user.conversation_id)
+    end
+    #conversation_list = Conversation.where(id: conversation_ids)
+    conversation_list
   end
-  # def conversation_with(contact_id)
-  #   conversations.find_by(user_ids: contact_id, type: "private")
-  # end
-
-
+  def conversations
+    Conversation.find(conversation_ids)
+  end
+  def start_conversation_with(user_id)
+    user = User.find(user_id)
+    self_conversation_user = conversation_users.new
+    user_conversation_user = user.conversation_users.new
+    conversation_between_users = Conversation.new
+    self_conversation_user.conversation_id = conversation_between_users.id
+    user_conversation_user.conversation_id = conversation_between_users.id
+    conversation_between_users.conversation_user_ids = [self_conversation_user.id, user_conversation_user.id]
+    self_conversation_user.save
+    user_conversation_user.save
+    conversation_between_users.save
+    puts self_conversation_user.user.email
+    puts user_conversation_user.user.email
+    puts conversation_between_users.conversation_user_ids
+  end
+  def conversation_with(user_id)
+    conversation_with_the_user_id = ""
+    user = User.find(user_id)
+    conversation_ids.each do |conversation_id|
+      user.conversation_ids.each do |user_conversation_id|
+        conversation_with_the_user_id = conversation_id if user_conversation_id == conversation_id
+      end
+    end
+    Conversation.find(conversation_with_the_user_id)
+  end
 end
