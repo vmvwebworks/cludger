@@ -1,0 +1,10 @@
+- if current_user
+  ul.collection.with-header
+    li.collection-header
+      h4 Conversaciones
+    - current_user.conversations.each do |conversation|
+      javascript:
+        App.CreateConversationChannel("#{conversation.id}")
+      li.collection-item
+        a href="#!#{conversation.id}"
+          = conversation.user(current_user.id).name

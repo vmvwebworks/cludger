@@ -9,7 +9,8 @@ MongoDB
 # System dependencies
 
 # Configuration
-
+  omniauth:
+  Must create a .env file with your own google_oauth key, read https://github.com/bkeepers/dotenv
 # How to run the test suite
 
 # Services (job queues, cache servers, search engines, etc.)

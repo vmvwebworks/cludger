@@ -1,6 +1,6 @@
 App.room = App.cable.subscriptions.create "RoomChannel",
   connected: ->
-    alert("bienvenido")
+    # alert("bienvenido")
     # Called when the subscription is ready for use on the server
 
   disconnected: ->
@@ -10,8 +10,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     $('#messages').append data['message']
     # Called when there's incoming data on the websocket for this channel
 
-  speak: (message)->
-    @perform 'speak', message: message
+  speak: (message, conversation_id)->
+    @perform 'speak', message: message, conversation_id: conversation_id
 
    $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
      if event.keyCode is 13 # return/enter = send
