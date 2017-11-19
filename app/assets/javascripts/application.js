@@ -15,7 +15,5 @@
 //= require rails-ujs
 //= require materialize-sprockets
 //= require turbolinks
-//= require underscore
-//= require gmaps/google
-//= require map
+//= require amcharts-js
 //= require_tree .
