@@ -16,7 +16,7 @@
 //= require materialize-sprockets
 //= require turbolinks
 //= require ammap
-//= require maps/js/worldHigh
+//= require maps/js/worldLow
 //= require themes/light
 //= require map
 

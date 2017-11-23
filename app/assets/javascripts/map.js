@@ -1,25 +1,16 @@
 var map;
-
 AmCharts.ready(function() {
     map = new AmCharts.AmMap();
+    map.balloon.color = "#ffab00";
+    map.dataProvider = {
+      mapVar: AmCharts.maps.worldLow,
+      getAreasFromMap: true,
 
-
-    map.balloon.color = "#000000";
-
-    var dataProvider = {
-        mapVar: AmCharts.maps.worldHigh,
-        getAreasFromMap:true
-    };
-
-    map.dataProvider = dataProvider;
-
+    }
     map.areasSettings = {
         autoZoom: true,
-        selectedColor: "#CC0000"
+        selectedColor: "#CC0000",
+        balloonText: "número de hablantes de X idioma en ese país"
     };
-
-    
-
     map.write("map");
-
 });
