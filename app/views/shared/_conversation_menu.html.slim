@@ -1,7 +1,6 @@
-.container
-  .valign-wrapper
-    a.button-collapse.btn-floating.btn-large.waves-effect.waves-light href="#" data-activates="slide-out"
-      i.material-icons chat_bubble_outline
+.fixed-action-btn
+  a.button-collapse.btn-floating.btn-large.waves-effect.waves-light.green href="#" data-activates="slide-out"
+    i.material-icons chat_bubble_outline
 ul.side-nav id="slide-out"
   li
     .user-view
@@ -14,7 +13,7 @@ ul.side-nav id="slide-out"
           input#search type="search"
           label.label-icon for="search"
           i.material-icons close
-      
+
       = render "shared/user_conversations"
       ul.collection.with-header
         li.collection-header
