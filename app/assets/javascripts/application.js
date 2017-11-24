@@ -15,7 +15,9 @@
 //= require rails-ujs
 //= require materialize-sprockets
 //= require turbolinks
-//= require underscore
-//= require gmaps/google
+//= require ammap
+//= require maps/js/worldLow
+//= require themes/light
 //= require map
+
 //= require_tree .
