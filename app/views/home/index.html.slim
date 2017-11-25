@@ -1,4 +1,6 @@
 - if current_user
+  = render "shared/toggler"
   .col.s12
     = render "shared/map"
-    = render "shared/conversation_menu" 
+    = render "shared/filter_results"
+    = render "shared/conversation_menu"
