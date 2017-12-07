@@ -1,4 +1,15 @@
 div id="filter-list"
+  .input-field.col.s6
+    i.material-icons.prefix search
+    input type="text" id="icon_prefix2"
+    label for="icon_prefix2" search by keyword
+  .input-field.col.s6
+    select
+      - @countries.each do |country|
+        option value="#{country.alpha2}" #{country.name}
+    label Elige País
+  = react_component("FilteredList")
+
   table.striped.highlight
     thead
       tr
@@ -9,11 +20,8 @@ div id="filter-list"
         th available now?
     tbody
       tr
-        td güili jeims
-        td ai spic englix sou gud
-        td 4
-        td 15£
-        td yes
+        = react_component("User", { username: "carapollens", intro: "eres un carapolla", rate: 4, price: 14, available: true })
+
       tr
         td carl hadsn
         td aim de bes chois for pipol guantin tu spic biter englix
@@ -26,3 +34,7 @@ div id="filter-list"
         td 3
         td 16£
         td yes
+javascript:
+  $(document).ready(function() {
+    $('select').material_select();
+  });

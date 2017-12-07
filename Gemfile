@@ -25,6 +25,12 @@ gem 'sass-rails', '~> 5.0'
 gem 'materialize-sass'
 # Material icons
 gem 'material_icons'
+# my own amchart_maps gem for map chart
+gem 'amchart_maps', path: '../amchart_maps'
+# Use searckick as feature elastiSearch for search engine
+gem 'searchkick'
+# country list for select
+gem 'country_list'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -44,7 +50,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'amchart_maps', path: '../amchart_maps'
 group :development, :test do
   # Load ENV variables
   gem 'dotenv-rails'
