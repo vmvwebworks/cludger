@@ -8,7 +8,7 @@ div id="filter-list"
       - @countries.each do |country|
         option value="#{country.alpha2}" #{country.name}
     label Elige País
-  = react_component("FilteredList")
+
 
   table.striped.highlight
     thead
@@ -20,7 +20,7 @@ div id="filter-list"
         th available now?
     tbody
       tr
-        = react_component("User", { username: "carapollens", intro: "eres un carapolla", rate: 4, price: 14, available: true })
+      
 
       tr
         td carl hadsn
