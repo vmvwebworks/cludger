@@ -8,6 +8,7 @@ AmCharts.ready(function() {
 
     }
     map.areasSettings = {
+        color: "#b33939",
         autoZoom: true,
         selectedColor: "#CC0000",
         balloonText: "número de hablantes de X idioma en ese país"

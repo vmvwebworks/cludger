@@ -1,13 +1,15 @@
 div id="filter-list"
-  .input-field.col.s6
-    i.material-icons.prefix search
-    input type="text" id="icon_prefix2"
-    label for="icon_prefix2" search by keyword
-  .input-field.col.s6
-    select
-      - @countries.each do |country|
-        option value="#{country.alpha2}" #{country.name}
-    label Elige País
+  = form_tag("/", method: "get") do
+    .input-field.col.s6
+      i.material-icons.prefix search
+      = text_field_tag(:userFilter)
+      = label_tag(:userFilter,"search by keyword")
+      = submit_tag("Search")
+    .input-field.col.s6
+      select name="country"
+        - @countries.each do |country|
+          option value="#{country.alpha2}" #{country.name}
+      label Elige País
 
 
   table.striped.highlight
@@ -20,20 +22,11 @@ div id="filter-list"
         th available now?
     tbody
       tr
-      
-
-      tr
-        td carl hadsn
-        td aim de bes chois for pipol guantin tu spic biter englix
+        td aloha
+        td esto es dummy
         td 2
         td 8£
         td no
-      tr
-        td raian andersen
-        td ai jelp güit yur intervius
-        td 3
-        td 16£
-        td yes
 javascript:
   $(document).ready(function() {
     $('select').material_select();

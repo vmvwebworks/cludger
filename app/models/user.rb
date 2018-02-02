@@ -37,8 +37,6 @@ class User
   field :last_sign_in_ip,    type: String
   field :created_at,         type: Time, default: Time.now
 
-  searchkick
-
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
