@@ -17,7 +17,8 @@ gem 'puma', '~> 3.7'
 gem 'slim'
 gem 'slim-rails'
 gem 'jquery-rails'
-
+# Frontend Framework
+gem 'react-rails'
 gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'sass-rails', '~> 5.0'
@@ -27,8 +28,6 @@ gem 'materialize-sass'
 gem 'material_icons'
 # my own amchart_maps gem for map chart
 gem 'amchart_maps', path: '../amchart_maps'
-# Use searckick as feature elastiSearch for search engine
-gem 'searchkick'
 # country list for select
 gem 'country_list'
 # Use Uglifier as compressor for JavaScript assets

@@ -21,15 +21,12 @@ div id="filter-list"
         th price/hour
         th available now?
     tbody
-      - @filteredUsers.each do |user|
-        tr
-          td
-            = user.name
-          td
-            = user.email
-          td 2
-          td 8£
-          td no
+      tr
+        td aloha
+        td esto es dummy
+        td 2
+        td 8£
+        td no
 javascript:
   $(document).ready(function() {
     $('select').material_select();
